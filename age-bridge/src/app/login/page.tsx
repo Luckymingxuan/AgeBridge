@@ -27,9 +27,9 @@ export default function Login() {
         alert('登录成功！');
         // 根据用户类型跳转到不同页面
         if (data.userType === 'ELDER') {
-          router.push('/dashboard/elder');
+          router.push('/dashboard/home');
         } else {
-          router.push('/dashboard/young');
+          router.push('/dashboard/home');
         }
       } else {
         alert(data.error || '登录失败');

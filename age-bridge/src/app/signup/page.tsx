@@ -36,9 +36,9 @@ export default function SignUp() {
       if (response.ok) {
         alert('注册成功！');
         if (userType === 'elder') {
-          router.push('/dashboard/elder');
+          router.push('/dashboard/home');
         } else {
-          router.push('/dashboard/young');
+          router.push('/dashboard/home');
         }
       } else {
         alert(data.error || '注册失败');
