@@ -26,11 +26,20 @@ export default function AddFriendPage() {
 
       setIsLoading(true);
       try {
-        const response = await fetch(`/api/users/search?phone=${searchQuery}`);
+        // 从 localStorage 获取当前用户ID
+        const currentUserId = localStorage.getItem('userId');
+        const response = await fetch(`/api/users/search?phone=${searchQuery}&currentUserId=${currentUserId}`);
         const data = await response.json();
-        setSearchResult(data.user);
+        
+        if (response.ok) {
+          setSearchResult(data.user);
+        } else {
+          console.error('搜索失败:', data.error);
+          setSearchResult(null);
+        }
       } catch (error) {
         console.error('搜索失败:', error);
+        setSearchResult(null);
       } finally {
         setIsLoading(false);
       }
@@ -43,11 +52,28 @@ export default function AddFriendPage() {
 
   // 删除原来的 handleSearch 函数，因为我们现在用 useEffect 来处理搜索
 
-  const handleSendInvite = async (userId: string) => {
+  const handleSendInvite = async (friendId: string) => {
     try {
-      // TODO: 实现发送好友邀请的逻辑
-      alert('已发送好友邀请');
+      const response = await fetch('/api/friends/invite', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          userId: '1',  // 临时使用固定ID进行测试
+          friendId: friendId
+        })
+      });
+  
+      const data = await response.json();
+      if (response.ok) {
+        alert('好友邀请已发送');
+        router.push('/dashboard/home');
+      } else {
+        alert(data.error || '发送邀请失败');
+      }
     } catch (error) {
+      console.error('发送邀请失败:', error);
       alert('发送邀请失败，请稍后重试');
     }
   };
