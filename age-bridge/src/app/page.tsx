@@ -23,6 +23,12 @@ export default function Home() {
           <li className="tracking-[-.01em]">
             Save and see your changes instantly.
           </li>
+          <li className="tracking-[-.01em]">
+            11111,在这里开发。
+          </li>
+          <li className="tracking-[-.01em]">
+            欢迎使用 AgeBridge - 连接代际的桥梁
+          </li>
         </ol>
 
         <div className="flex gap-4 items-center flex-col sm:flex-row">
