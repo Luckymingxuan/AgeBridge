@@ -86,7 +86,7 @@ export default function Home() {
             onClick={() => router.push('/signup')}
             style={{
               position: 'absolute',
-              left: '200px',  // 调整 left 属性以靠近登录按钮
+              left: '200px',
               top: '638px',
               width: '128px',
               height: '53px',
@@ -96,20 +96,24 @@ export default function Home() {
               background: '#725C4B',
               color: '#FFFFFF',
               fontFamily: 'Alibaba PuHuiTi 3.0',
-              fontSize: '16px',
+              fontSize: '25px',
               fontWeight: 'bold',
               justifyContent: 'center',
               alignItems: 'center',
-              transform: 'scaleX(-1)',  // 水平翻转按钮
+              transform: 'scaleX(-1)',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
             }}
           >
-            <span style={{ transform: 'scaleX(-1)' }}>注册</span>
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', transform: 'scaleX(-1)', gap: '4px' }}>
+              <span style={{ lineHeight: '1' }}>注册</span>
+              <span style={{ fontSize: '12px', lineHeight: '1', marginTop: '-2px' }}>Sign up</span>
+            </div>
           </button>
           <button 
             onClick={() => router.push('/login')}
             style={{
               position: 'absolute',
-              left: '50px',  // 调整 left 属性以靠近注册按钮
+              left: '50px',
               top: '638px',
               width: '128px',
               height: '53px',
@@ -119,13 +123,17 @@ export default function Home() {
               background: '#5A5449',
               color: '#FFFFFF',
               fontFamily: 'Alibaba PuHuiTi 3.0',
-              fontSize: '16px',
+              fontSize: '25px',
               fontWeight: 'bold',
               justifyContent: 'center',
-              alignItems: 'center'
+              alignItems: 'center',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
             }}
           >
-            登录
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '4px' }}>
+              <span style={{ lineHeight: '1' }}>登录</span>
+              <span style={{ fontSize: '12px', lineHeight: '1', marginTop: '-2px' }}>Log in</span>
+            </div>
           </button>
         </div>
       </main>
