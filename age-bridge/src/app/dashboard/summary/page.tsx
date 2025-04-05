@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 
 export default function SummaryPage() {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);  // 添加 loading 状态
-  const [summaries] = useState([
+  const [loading, setLoading] = useState(false);
+  const [summaries, setSummaries] = useState([  // 修改为可变状态
     {
       id: '1',
       date: '2024-01-20',
@@ -53,7 +53,7 @@ export default function SummaryPage() {
         },
         body: JSON.stringify({
           conversation_id: "123",
-          bot_id: "7489484247120969779",
+          bot_id: "7489655254359818240",
           user: "29032201862555",
           query: msgseand,
           stream: false
@@ -67,7 +67,20 @@ export default function SummaryPage() {
       if (data.messages && data.messages.length > 0) {
         const firstMessageContent = data.messages[0].content;
         console.log('First message content:', firstMessageContent);
-        // 这里你可以进一步处理 firstMessageContent
+        
+        const aiResponse = JSON.parse(data.messages[0].content);
+        const currentDate = new Date().toISOString().split('T')[0];
+        
+        setSummaries(prevSummaries => {
+          const newSummaries = [...prevSummaries];
+          newSummaries[0] = {
+            ...newSummaries[0],
+            date: currentDate,
+            content: `年轻人需求：\n${aiResponse.output.summary.young}\n\n老年人需求：\n${aiResponse.output.summary.older}`,
+            tags: aiResponse.output.keywords.split('、')
+          };
+          return newSummaries;
+        });
       }
     } catch (error) {
       console.error('Error calling Coze API:', error);
