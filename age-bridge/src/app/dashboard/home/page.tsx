@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 export default function DashboardHomePage() {
   const router = useRouter();
   const [contacts] = useState([
-    { id: '1', name: '张阿姨', lastMessage: '今天天气真不错啊！', time: '14:30' },
+    { id: '1', name: '老登-活跃用户', lastMessage: '我：你所谓的关心就是天天误解我，根本...', time: '14:30' },
     { id: '2', name: '王叔叔', lastMessage: '小伙子，有空来家里吃饭', time: '12:00' },
     { id: '3', name: '李奶奶', lastMessage: '谢谢你教我用手机', time: '昨天' },
     // ... 可以添加更多联系人
@@ -31,7 +31,13 @@ export default function DashboardHomePage() {
           <div
             key={contact.id}
             className="flex items-center p-4 border-b cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700"
-            onClick={() => router.push(`/dashboard/chat/${contact.id}`)}
+            onClick={() => {
+              if (contact.id === '1') {
+                router.push('/dashboard/demo');  // 对于ID为1的联系人，跳转到演示页面
+              } else {
+                router.push(`/dashboard/chat/${contact.id}`);  // 其他联系人保持原有跳转
+              }
+            }}
           >
             <div className="h-12 w-12 rounded-full bg-gray-300 dark:bg-gray-600 flex-shrink-0" />
             <div className="ml-4 flex-1">
@@ -52,7 +58,10 @@ export default function DashboardHomePage() {
             <AiOutlineHome size={24} />
             <span className="text-xs mt-1">首页</span>
           </button>
-          <button className="flex flex-col items-center p-2 text-gray-500">
+          <button 
+            className="flex flex-col items-center p-2 text-gray-500 hover:text-blue-500"
+            onClick={() => router.push('/dashboard/summary')}
+          >
             <AiOutlineStar size={24} />
             <span className="text-xs mt-1">需求总结</span>
           </button>
