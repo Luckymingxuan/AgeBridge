@@ -34,7 +34,8 @@ export default function Home() {
               letterSpacing: '-0.04em',
               fontVariationSettings: '"opsz" auto',
               fontFeatureSettings: '"kern" on',
-              color: '#3D3D3D'
+              color: '#3D3D3D',
+              textShadow: '2px 2px 4px rgba(0, 0, 0, 0.2)'  // 添加阴影效果
             }}
           >
             跨代 沟通
@@ -87,7 +88,7 @@ export default function Home() {
             style={{
               position: 'absolute',
               left: '200px',
-              top: '638px',
+              top: '658px',  // 从 638px 调整到 658px
               width: '128px',
               height: '53px',
               borderRadius: '25px 6px 31px 12px',
@@ -114,7 +115,7 @@ export default function Home() {
             style={{
               position: 'absolute',
               left: '50px',
-              top: '638px',
+              top: '658px',  // 从 638px 调整到 658px
               width: '128px',
               height: '53px',
               borderRadius: '25px 6px 31px 12px',
@@ -137,6 +138,66 @@ export default function Home() {
           </button>
         </div>
       </main>
+      <svg
+        style={{
+          position: 'absolute',
+          left: '-56px',
+          top: '-92.5px',
+          width: '545px',
+          height: '288.5px',
+          zIndex: -1,
+        }}
+        viewBox="0 0 545 288.5"
+      >
+        <path
+          d="M40,220 
+           C90,235 120,242 150,245
+           S220,250 260,220
+           S350,190 450,245
+           S500,250 505,245
+           C525,242 545,235 545,215
+           C545,160 545,120 545,80
+           C545,55 525,45 505,42
+           C450,35 350,32 272,35
+           S120,40 40,44
+           C20,46 0,58 0,80
+           C0,140 0,180 0,200
+           C0,212 20,218 40,220 Z"
+          fill="#E5CEA0"
+          stroke="#BBA677"
+          strokeWidth="17"
+        />
+      </svg>
+      <svg
+        style={{
+          position: 'absolute',
+          left: '-103px',
+          top: '681px',
+          width: '588px',
+          height: '264px',
+          zIndex: -1,
+        }}
+        viewBox="0 0 608 264"
+      >
+        <path
+          d="M40,80 
+           C90,75 120,50 150,45
+           S200,40 240,55
+           S350,20 450,10
+           S520,8 550,12
+           C575,15 588,35 588,65
+           C588,140 588,180 588,220
+           C588,245 575,255 550,258
+           C450,265 350,268 294,265
+           S120,260 40,256
+           C20,254 0,242 0,220
+           C0,160 0,120 0,100
+           C0,88 20,82 40,80 Z"
+          fill="#907C4D"
+          stroke="#D3C4A2"
+          strokeWidth="28"
+        />
+      </svg>
     </div>
   );
 }
