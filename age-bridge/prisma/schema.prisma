@@ -13,8 +13,27 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// 用户信息数据库
 
+// 好友关系表
+model FriendTab {
+  id          String   @id @default(cuid())
+  userId      String   
+  friendId    String   
+  state       FriendState  // 修改为枚举类型
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([userId, friendId])
+}
+
+enum FriendState {
+  PENDING    // 申请中
+  ACCEPTED   // 已接受
+  REJECTED   // 已拒绝
+}
+
+
+// 用户信息数据库
 model User {
   id        String   @id @default(cuid())
   username  String   @unique
@@ -23,6 +42,8 @@ model User {
   userType  UserType
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  // 添加关联字段
 }
 
 enum UserType {
